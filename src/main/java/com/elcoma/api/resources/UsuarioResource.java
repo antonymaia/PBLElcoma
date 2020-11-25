@@ -23,7 +23,7 @@ public class UsuarioResource {
 
     //Anotação para criar um endPoint de méotodo Post, no qual vai inserir um usuario no banco
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@Valid @RequestBody Usuario usuario){
+    public ResponseEntity<Void> insert(@Valid @RequestBody Usuario usuario) {
         usuario = service.insert(usuario);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(usuario.getId()).toUri();
@@ -31,20 +31,20 @@ public class UsuarioResource {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Usuario> findById(@PathVariable Integer id){
+    public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
 
         Usuario usuario = service.findById(id);
         return ResponseEntity.ok().body(usuario);
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Usuario>> findAll(){
+    public ResponseEntity<List<Usuario>> findAll() {
         List<Usuario> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Void> update(@Valid @RequestBody Usuario usuario, @PathVariable Integer id){
+    public ResponseEntity<Void> update(@Valid @RequestBody Usuario usuario, @PathVariable Integer id) {
         usuario.setId(id);
         usuario = service.update(usuario);
         return ResponseEntity.noContent().build();
