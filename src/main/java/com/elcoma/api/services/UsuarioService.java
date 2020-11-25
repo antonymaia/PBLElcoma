@@ -4,9 +4,11 @@ import com.elcoma.api.domain.Cupom;
 import com.elcoma.api.domain.Loja;
 import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.repositories.UsuarioRepository;
+import com.elcoma.api.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 // Anotação usada para especificar que essa classe é um service, aqui é onde se implementa a regra de negocioo
@@ -22,4 +24,21 @@ public class UsuarioService {
         usuario = repository.save(usuario);
         return usuario;
     }
+
+    public Usuario findById(Integer id){
+        Optional<Usuario> usuario = repository.findById(id);
+        return usuario.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado: Id: " + id + ", Tipo: " + Usuario.class.getName()));
+    }
+
+    public List<Usuario> findAll(){
+        return repository.findAll();
+    }
+
+
+    public Usuario update(Usuario usuario) {
+        findById(usuario.getId());
+        return repository.save(usuario);
+    }
 }
+

@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,14 +36,16 @@ public class Usuario implements Serializable {
 
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date nascimento;
-    private String senha;
+    private String nascimento;
+
+    //Na tabela existe a coluna de senha???
+    //private String senha;
 
     //Construtor vazio
     public Usuario(){}
 
     //Construtor com todos atributos inicializados
-    public Usuario(int id, String cpf, String nome, String endereco, String sexo, String email, Date nascimento, String senha) {
+    public Usuario(int id, String cpf, String nome, String endereco, String sexo, String email, String nascimento) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -54,7 +53,7 @@ public class Usuario implements Serializable {
         this.sexo = sexo;
         this.email = email;
         this.nascimento = nascimento;
-        this.senha = senha;
+        //this.senha = senha;
     }
 
 

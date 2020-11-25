@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NotalFiscalService {
+public class NotaFiscalService {
 
     @Autowired
     private NotaFiscalRepository repository;
@@ -32,12 +32,11 @@ public class NotalFiscalService {
         ));
     }
 
-    public NotaFiscal update(NotaFiscal notaFiscal){
-        NotaFiscal newNotaFiscal = findById(notaFiscal.getId());
-        newNotaFiscal.setLoja(notaFiscal.getLoja());
-        newNotaFiscal.setUsuario(notaFiscal.getUsuario());
-        newNotaFiscal.setValor(notaFiscal.getValor());
-        return repository.save(newNotaFiscal);
+
+    public NotaFiscal update(NotaFiscal notaFiscal) {
+        findById(notaFiscal.getId());
+        return repository.save(notaFiscal);
+
     }
 
     public void delete(Integer id){

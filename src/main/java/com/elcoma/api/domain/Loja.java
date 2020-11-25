@@ -25,7 +25,11 @@ public class Loja implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "loja_fk")
     private List<Cupom> cupons = new ArrayList();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "loja_fk" )
     private List<NotaFiscal> notasFiscais = new ArrayList<>();
+
     public Loja() {
     }
   
@@ -35,5 +39,6 @@ public class Loja implements Serializable {
         this.estilo = estilo;
         this.nome = nome;
         this.ponto = ponto;
+
     }
 }

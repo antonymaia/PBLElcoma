@@ -26,10 +26,11 @@ public class Cupom implements Serializable {
     public Cupom() {
     }
 
-    public Cupom(Integer id, String validade, String valor) {
+    public Cupom(Integer id, String validade, String valor, Loja loja_fk) {
         this.id = id;
         this.validade = validade;
         this.valor = valor;
+        this.loja_fk = loja_fk;
     }
 
 

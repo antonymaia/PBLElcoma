@@ -1,8 +1,7 @@
 package com.elcoma.api.resources;
 
 import com.elcoma.api.domain.NotaFiscal;
-import com.elcoma.api.domain.Usuario;
-import com.elcoma.api.services.NotalFiscalService;
+import com.elcoma.api.services.NotaFiscalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ import java.util.List;
 public class NotaFiscalResource {
 
     @Autowired
-    private NotalFiscalService  service;
+    private NotaFiscalService service;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody NotaFiscal notaFiscal) {
@@ -39,6 +38,7 @@ public class NotaFiscalResource {
         notaFiscal = service.update(notaFiscal);
         return ResponseEntity.noContent().build();
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Integer id){

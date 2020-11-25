@@ -11,6 +11,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 //Anotação usada para especificar que essa classse é o restController
 @RestController
@@ -32,7 +33,7 @@ public class UsuarioResource {
 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
+    public ResponseEntity<Usuario> find(@PathVariable Integer id) {
 
         Usuario usuario = service.findById(id);
         return ResponseEntity.ok().body(usuario);

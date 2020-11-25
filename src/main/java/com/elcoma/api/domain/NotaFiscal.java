@@ -20,7 +20,7 @@ public class NotaFiscal {
 
     @ManyToOne
     @JoinColumn(name = "id_loja")
-    private Loja loja;
+    private Loja loja_fk;
 
     public NotaFiscal(){}
 
@@ -28,6 +28,6 @@ public class NotaFiscal {
         this.id = id;
         this.valor = decimal;
         this.usuario = usuario;
-        this.loja = loja;
+        this.loja_fk = loja;
     }
 }

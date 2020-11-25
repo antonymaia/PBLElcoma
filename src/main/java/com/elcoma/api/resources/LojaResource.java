@@ -1,7 +1,7 @@
 package com.elcoma.api.resources;
 
 
-=======
+
 
 
 import com.elcoma.api.domain.Cupom;
@@ -33,7 +33,7 @@ public class LojaResource {
     private LojaService service;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Loja> find (@PathVariable Integer id){
+    public ResponseEntity<Loja> find(@PathVariable Integer id){
         Loja loja = service.findById(id);
         return ResponseEntity.ok().body(loja);
     }
