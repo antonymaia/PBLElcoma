@@ -1,6 +1,6 @@
 package com.elcoma.api.domain;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Loja implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+    private static final long serialVersionUID = 1L;  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -23,13 +22,13 @@ public class Loja implements Serializable {
     private String nome;
     private String ponto;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "loja_fk")
-        private List<Cupom> cupons = new ArrayList();
-
+    private List<Cupom> cupons = new ArrayList();
+    private List<NotaFiscal> notasFiscais = new ArrayList<>();
     public Loja() {
     }
-
+  
     public Loja(Integer id, String cnpj, String estilo, String nome, String ponto) {
         this.id = id;
         this.cnpj = cnpj;

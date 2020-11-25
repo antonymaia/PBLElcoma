@@ -1,5 +1,8 @@
 package com.elcoma.api.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 //anotação usada para especificar que essa classe corresponde a tabela "tb_usuario"
 @Entity(name = "tb_usuario")
@@ -26,6 +31,14 @@ public class Usuario implements Serializable {
     private String endereco;
     private String sexo;
     private String email;
+
+    //@JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    @JsonIgnore
+    private List<NotaFiscal> notasFiscais = new ArrayList<>();
+
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date nascimento;
     private String senha;
 
