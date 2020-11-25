@@ -1,11 +1,15 @@
 package com.elcoma.api.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,13 +17,10 @@ import java.util.List;
 
 //anotação usada para especificar que essa classe corresponde a tabela "tb_usuario"
 @Entity(name = "tb_usuario")
-
 /*anotações do lombok, utilizada para gerar o getters e setters sem o codigo
   mas para utilizar, é necessário que você adicione o plugin lombok na sua ide*/
 @Getter @Setter
 public class Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
-
     //anotação usada para especificar que o atributo id é um a chave primaira da tabela
     @Id
     // abotação usada para especificar que a chave primaria é auto increment
@@ -31,17 +32,14 @@ public class Usuario implements Serializable {
     private String sexo;
     private String email;
 
-
     //@JsonIgnore
     @OneToMany(mappedBy = "usuario")
     @JsonIgnore
     private List<NotaFiscal> notasFiscais = new ArrayList<>();
 
 
-
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date nascimento;
-
     private String senha;
 
     //Construtor vazio
