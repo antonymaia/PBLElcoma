@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity(name = "tb_notafiscal")
+@Entity(name = "tb_nota_fiscal")
 @Getter @Setter
 public class NotaFiscal {
 
