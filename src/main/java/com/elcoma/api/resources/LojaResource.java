@@ -2,9 +2,6 @@ package com.elcoma.api.resources;
 
 
 
-
-
-import com.elcoma.api.domain.Cupom;
 import com.elcoma.api.domain.Loja;
 import com.elcoma.api.services.LojaService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,11 +21,6 @@ import java.util.Optional;
 @RequestMapping(value = "/lojas")
 public class LojaResource {
 
-
-    
-
-   
-
     @Autowired
     private LojaService service;
 
@@ -37,7 +29,7 @@ public class LojaResource {
         Loja loja = service.findById(id);
         return ResponseEntity.ok().body(loja);
     }
-     @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody Loja loja){
         loja = service.insert(loja);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

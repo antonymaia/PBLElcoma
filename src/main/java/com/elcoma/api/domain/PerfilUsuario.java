@@ -14,9 +14,19 @@ public class PerfilUsuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String obs;
+    private String preferencias;
+    private String horarios;
 
-    @ManyToOne
-    @JoinColumn(name = "id_nota_fsical")
-    NotaFiscal notaFiscal;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id")
+    NotaFiscal notaFiscal_fk;
 
+    public PerfilUsuario(Integer id, String obs, String preferencias, String horarios, NotaFiscal notaFiscal_fk) {
+        this.id = id;
+        this.obs = obs;
+        this.preferencias = preferencias;
+        this.horarios = horarios;
+        this.notaFiscal_fk = notaFiscal_fk;
+    }
 }

@@ -1,11 +1,12 @@
 package com.elcoma.api.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity(name = "tb_notafiscal")
+@Entity(name = "tb_nota_fiscal")
 @Getter @Setter
 public class NotaFiscal {
 
@@ -22,7 +23,10 @@ public class NotaFiscal {
     @JoinColumn(name = "id_loja")
     private Loja loja_fk;
 
-    public NotaFiscal(){}
+    @JsonIgnore
+    @OneToOne(mappedBy = "notaFiscal_fk")
+    private PerfilUsuario perfilUsuario;
+
 
     public NotaFiscal(Integer id, Double decimal, Usuario usuario, Loja loja) {
         this.id = id;
