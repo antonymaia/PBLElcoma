@@ -11,14 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-// Anotação usada para especificar que essa classe é um service, aqui é onde se implementa a regra de negocioo
 @Service
 public class UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
 
-    // Método para cadastrar usuario
     public Usuario insert(Usuario usuario){
         usuario.setId(null);
         usuario = repository.save(usuario);
@@ -34,7 +32,6 @@ public class UsuarioService {
     public List<Usuario> findAll(){
         return repository.findAll();
     }
-
 
     public Usuario update(Usuario usuario) {
         findById(usuario.getId());

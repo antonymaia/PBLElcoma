@@ -21,11 +21,13 @@ import java.util.Optional;
 public class LojaService {
 
 
+   
+
+
     @Autowired
     private LojaRepository repository;
     // Cadastrando a loja
 
-    @Transactional
     public Loja insert(Loja loja){
         loja.setId(null);
         loja = repository.save(loja);
@@ -44,19 +46,17 @@ public class LojaService {
   
     public List<Loja> findAll(){return repository.findAll();}
   
-    public void delete(Integer id){
+    public void delete(Integer id) {
         findById(id);
-        try{
+        try {
             repository.deleteById(id);
-        }catch (DataIntegrityViolationException e){
-            throw new DataIntegretyException("Não é possível essa loja");
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegretyException("Não é possível excluir uma Loja que possui notas fiscais cadastradas");
         }
     }
-      
     public Loja update(Loja loja) {
         findById(loja.getId());
         return repository.save(loja);  
                  
     }
 }
-

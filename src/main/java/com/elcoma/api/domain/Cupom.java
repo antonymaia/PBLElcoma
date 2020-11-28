@@ -21,16 +21,16 @@ public class Cupom implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_loja")
-    private Loja loja_fk;
+    private Loja loja;
 
     public Cupom() {
     }
 
-    public Cupom(Integer id, String validade, String valor, Loja loja_fk) {
+    public Cupom(Integer id, String validade, String valor, Loja loja) {
         this.id = id;
         this.validade = validade;
         this.valor = valor;
-        this.loja_fk = loja_fk;
+        this.loja = loja;
     }
 
 

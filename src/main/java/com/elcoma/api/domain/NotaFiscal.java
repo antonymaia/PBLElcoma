@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity(name = "tb_nota_fiscal")
 @Getter @Setter
-public class NotaFiscal {
+public class NotaFiscal implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +23,7 @@ public class NotaFiscal {
 
     @ManyToOne
     @JoinColumn(name = "id_loja")
-    private Loja loja_fk;
+    private Loja loja;
 
     @JsonIgnore
     @OneToOne(mappedBy = "notaFiscal_fk")
@@ -32,6 +34,6 @@ public class NotaFiscal {
         this.id = id;
         this.valor = decimal;
         this.usuario = usuario;
-        this.loja_fk = loja;
+        this.loja= loja;
     }
 }
