@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Loja implements Serializable {
+    private static final long serialVersionUID = 1L;  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,14 +22,13 @@ public class Loja implements Serializable {
     private String nome;
     private String ponto;
 
-    @OneToMany(mappedBy = "loja")
     @JsonIgnore
+    @OneToMany(mappedBy = "loja_fk")
+    private List<Cupom> cupons = new ArrayList();
     private List<NotaFiscal> notasFiscais = new ArrayList<>();
-   // @OneToMany(mappedBy = "loja_fk")
-    //private List<Cupom> cupons = new ArrayList();
-
-
-    public Loja(){}
+    public Loja() {
+    }
+  
     public Loja(Integer id, String cnpj, String estilo, String nome, String ponto) {
         this.id = id;
         this.cnpj = cnpj;

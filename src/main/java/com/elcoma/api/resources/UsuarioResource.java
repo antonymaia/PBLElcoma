@@ -1,5 +1,6 @@
 package com.elcoma.api.resources;
 
+import com.elcoma.api.domain.Loja;
 import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.repositories.UsuarioRepository;
 import com.elcoma.api.services.UsuarioService;
@@ -10,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 //Anotação usada para especificar que essa classse é o restController
 @RestController
@@ -29,6 +29,7 @@ public class UsuarioResource {
                 .path("/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Usuario> findById(@PathVariable Integer id) {
@@ -50,3 +51,4 @@ public class UsuarioResource {
         return ResponseEntity.noContent().build();
     }
 }
+
