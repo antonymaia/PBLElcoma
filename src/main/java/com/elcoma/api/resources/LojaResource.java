@@ -1,13 +1,5 @@
 package com.elcoma.api.resources;
 
-
-
-
-
-import com.elcoma.api.domain.Cupom;
-import com.elcoma.api.domain.Loja;
-import com.elcoma.api.services.LojaService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.elcoma.api.domain.Loja;
 import com.elcoma.api.services.LojaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +9,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Optional;
-
 
 @RestController
 @RequestMapping(value = "/lojas")
 public class LojaResource {
-
-
-    
-
-   
-
     @Autowired
     private LojaService service;
 

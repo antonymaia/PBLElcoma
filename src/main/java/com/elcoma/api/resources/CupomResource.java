@@ -1,7 +1,6 @@
 package com.elcoma.api.resources;
 
 import com.elcoma.api.domain.Cupom;
-import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.services.CupomService;
 import javassist.tools.rmi.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -22,12 +22,17 @@ public class Loja implements Serializable {
     private String nome;
     private String ponto;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
+
+
     @JsonIgnore
-    @OneToMany(mappedBy = "loja_fk")
+    @OneToMany(mappedBy = "loja")
     private List<Cupom> cupons = new ArrayList();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "loja_fk" )
+    @OneToMany(mappedBy = "loja" )
     private List<NotaFiscal> notasFiscais = new ArrayList<>();
 
     public Loja() {
