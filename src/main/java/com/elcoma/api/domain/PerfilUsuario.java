@@ -22,6 +22,9 @@ public class PerfilUsuario implements Serializable {
     @JoinColumn(name = "id_nota_fiscal", referencedColumnName = "id")
     NotaFiscal notaFiscal_fk;
 
+    public PerfilUsuario() {
+    }
+
     public PerfilUsuario(Integer id, String obs, String preferencias, String horarios, NotaFiscal notaFiscal_fk) {
         this.id = id;
         this.obs = obs;

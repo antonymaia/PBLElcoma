@@ -18,7 +18,7 @@ public class Loja implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String cnpj;
-    private String estilo;
+    private String categoria;
     private String nome;
     private String ponto;
 
@@ -38,12 +38,12 @@ public class Loja implements Serializable {
     public Loja() {
     }
   
-    public Loja(Integer id, String cnpj, String estilo, String nome, String ponto) {
+    public Loja(Integer id, String cnpj, String categoria, String nome, String ponto, Cliente cliente) {
         this.id = id;
         this.cnpj = cnpj;
-        this.estilo = estilo;
+        this.categoria = categoria;
         this.nome = nome;
         this.ponto = ponto;
-
+        this.cliente = cliente;
     }
 }

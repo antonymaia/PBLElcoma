@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     private String endereco;
     private String sexo;
     private String email;
-    private String senha;
+    //private String senha;
 
     //@JsonIgnore
     @OneToMany(mappedBy = "usuario")

@@ -23,6 +23,14 @@ public class Cliente implements Serializable {
     @JsonIgnore
     private List<Loja> listLoja;
 
+
+    @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
+    private List<Propaganda> propagandas;
+
+    public Cliente() {
+    }
+
     public Cliente(Integer id, String cnpj, String nome, String endereco) {
         this.id = id;
         this.cnpj = cnpj;

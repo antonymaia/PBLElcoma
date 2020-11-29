@@ -29,6 +29,8 @@ public class NotaFiscal implements Serializable{
     @OneToOne(mappedBy = "notaFiscal_fk")
     private PerfilUsuario perfilUsuario;
 
+    public NotaFiscal() {
+    }
 
     public NotaFiscal(Integer id, Double decimal, Usuario usuario, Loja loja) {
         this.id = id;

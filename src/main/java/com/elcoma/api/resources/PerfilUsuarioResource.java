@@ -1,4 +1,4 @@
-package com.elcoma.api.resources.exception;
+package com.elcoma.api.resources;
 
 import com.elcoma.api.domain.PerfilUsuario;
 import com.elcoma.api.services.PerfilUsuarioService;
