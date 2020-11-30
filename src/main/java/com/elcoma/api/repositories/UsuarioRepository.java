@@ -2,9 +2,14 @@ package com.elcoma.api.repositories;
 
 import com.elcoma.api.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-// Anotação usada para especificar que essa interface é um repository
+import java.util.Optional;
+
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+
+    //@Query(value = "select u from tb_usuario u where u.cpf = ?1", nativeQuery = true)
+    Optional<Usuario> findByCpf(String cpf);
 }

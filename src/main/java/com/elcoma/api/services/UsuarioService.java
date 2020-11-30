@@ -1,7 +1,4 @@
 package com.elcoma.api.services;
-
-import com.elcoma.api.domain.Cupom;
-import com.elcoma.api.domain.Loja;
 import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.repositories.UsuarioRepository;
 import com.elcoma.api.services.exceptions.ObjectNotFoundException;
@@ -37,5 +34,12 @@ public class UsuarioService {
         findById(usuario.getId());
         return repository.save(usuario);
     }
+
+    public Usuario findByCpf(String cpf) {
+        Optional<Usuario> usuario = repository.findByCpf(cpf);
+        return usuario.orElseThrow(() -> new ObjectNotFoundException(
+                "Objeto não encontrado: CPF: " + cpf + ", Tipo: " + Usuario.class.getName()));
+    }
+
 }
 

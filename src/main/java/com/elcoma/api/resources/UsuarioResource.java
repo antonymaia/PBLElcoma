@@ -3,13 +3,16 @@ package com.elcoma.api.resources;
 import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/usuarios")
@@ -29,10 +32,21 @@ public class UsuarioResource {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Usuario> find(@PathVariable Integer id) {
-
         Usuario usuario = service.findById(id);
         return ResponseEntity.ok().body(usuario);
     }
+
+    @RequestMapping(value = "/cpf/{cpf}", method = RequestMethod.GET)
+    public ResponseEntity<Usuario> findByCpf(@PathVariable String cpf) {
+        Usuario usuario = service.findByCpf(cpf);
+        return ResponseEntity.ok().body(usuario);
+    }
+
+   /* @RequestMapping(value = "/economia", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Map<String, Double>> economia(){
+
+        return Collections.singletonMap("economia", 1000.50);
+    }*/
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Usuario>> findAll() {
