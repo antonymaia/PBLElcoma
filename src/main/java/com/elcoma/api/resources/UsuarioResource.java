@@ -25,7 +25,6 @@ public class UsuarioResource {
     public ResponseEntity<Void> insert(@Valid @RequestBody Usuario usuario) {
         usuario = service.insert(usuario);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
@@ -58,6 +57,9 @@ public class UsuarioResource {
     public ResponseEntity<Void> update(@Valid @RequestBody Usuario usuario, @PathVariable Integer id) {
         usuario.setId(id);
         usuario = service.update(usuario);
+    @RequestMapping(value = "/{cpf}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@Valid @RequestBody Usuario usuario, @PathVariable String cpf) {
+        usuario = service.update(usuario, cpf);
         return ResponseEntity.noContent().build();
     }
 }

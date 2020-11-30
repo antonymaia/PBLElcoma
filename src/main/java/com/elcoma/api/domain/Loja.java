@@ -22,6 +22,7 @@ public class Loja implements Serializable {
     private String nome;
     private String ponto;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;

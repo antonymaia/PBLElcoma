@@ -32,6 +32,8 @@ public class UsuarioService {
 
     public Usuario update(Usuario usuario) {
         findById(usuario.getId());
+    public Usuario update(Usuario usuario, String cpf) {
+        findByCpf(cpf);
         return repository.save(usuario);
     }
 
