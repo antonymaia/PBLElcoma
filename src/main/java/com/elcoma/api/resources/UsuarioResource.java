@@ -1,8 +1,11 @@
 package com.elcoma.api.resources;
 
 import com.elcoma.api.domain.Usuario;
+import com.elcoma.api.repositories.UsuarioRepository;
 import com.elcoma.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,11 +56,16 @@ public class UsuarioResource {
         List<Usuario> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
+
     //att pelo cpf
     @RequestMapping(value = "/{cpf}", method = RequestMethod.PUT)
     public ResponseEntity<Void> update(@Valid @RequestBody Usuario usuario, @PathVariable String cpf) {
         usuario = service.update(usuario, cpf);
         return ResponseEntity.noContent().build();
     }
+
+
+
+
 }
 

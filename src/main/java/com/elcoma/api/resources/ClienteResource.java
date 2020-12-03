@@ -47,4 +47,7 @@ public class ClienteResource {
         cliente = service.update(cliente);
         return ResponseEntity.noContent().build();
     }
+
+
+
 }

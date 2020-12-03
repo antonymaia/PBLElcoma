@@ -9,7 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
-    //@Query(value = "select u from tb_usuario u where u.cpf = ?1", nativeQuery = true)
     Optional<Usuario> findByCpf(String cpf);
 }
