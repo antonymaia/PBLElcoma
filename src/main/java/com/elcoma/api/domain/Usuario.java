@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
     private String endereco;
     private String sexo;
     private String email;
-    //private String senha;
+    private String senha;
 
     //@JsonIgnore
     @OneToMany(mappedBy = "usuario")
@@ -36,9 +36,9 @@ public class Usuario implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private String nascimento;
 
-    //Na tabela existe a coluna de senha???
-    //private String senha;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioCupom> listUsuarioCupom = new ArrayList();
     //Construtor vazio
     public Usuario(){}
 

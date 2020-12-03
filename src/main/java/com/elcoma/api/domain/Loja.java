@@ -26,7 +26,6 @@ public class Loja implements Serializable {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-
     @JsonIgnore
     @OneToMany(mappedBy = "loja")
     private List<Cupom> cupons = new ArrayList();

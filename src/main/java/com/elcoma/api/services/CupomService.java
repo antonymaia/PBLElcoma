@@ -2,6 +2,7 @@ package com.elcoma.api.services;
 
 import com.elcoma.api.domain.Cupom;
 import com.elcoma.api.domain.Loja;
+import com.elcoma.api.domain.Usuario;
 import com.elcoma.api.repositories.CupomRepository;
 
 import com.elcoma.api.services.exceptions.DataIntegretyException;
@@ -47,5 +48,11 @@ public class CupomService {
         }catch (DataIntegrityViolationException e){
             throw new DataIntegretyException("Não é possível excluir esse cupom");
         }
+    }
+
+    public List<Cupom> findAllByMothAndUsuario(String mes, Integer id_usuario){
+        findById(id_usuario);
+        List<Cupom> cupom = repository.findAllByMothAndUsuario(mes, id_usuario);
+        return cupom;
     }
 }
