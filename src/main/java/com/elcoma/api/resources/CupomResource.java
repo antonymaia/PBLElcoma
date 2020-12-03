@@ -54,9 +54,10 @@ public class CupomResource {
         return ResponseEntity.noContent().build();
     }
 
-
-
-
-
+    @RequestMapping(value = "/{id}/{mes}", method = RequestMethod.GET)
+    public ResponseEntity<List<Cupom>> findAllByMothAndUsuario(@PathVariable Integer id, @PathVariable String mes){
+        List<Cupom> list = service.findAllByMothAndUsuario(mes, id);
+        return  ResponseEntity.ok().body(list);
+    }
 }
 

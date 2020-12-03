@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
     private String email;
     private String senha;
 
-
+    //@JsonIgnore
     @OneToMany(mappedBy = "usuario")
     @JsonIgnore
     private List<NotaFiscal> notasFiscais = new ArrayList<>();
@@ -36,11 +36,14 @@ public class Usuario implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private String nascimento;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario")
+    private List<UsuarioCupom> listUsuarioCupom = new ArrayList();
     //Construtor vazio
     public Usuario(){}
 
     //Construtor com todos atributos inicializados
-    public Usuario(int id, String cpf, String nome, String endereco, String sexo, String email, String nascimento, String senha) {
+    public Usuario(int id, String cpf, String nome, String endereco, String sexo, String email, String nascimento) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -48,6 +51,8 @@ public class Usuario implements Serializable {
         this.sexo = sexo;
         this.email = email;
         this.nascimento = nascimento;
-        this.senha = senha;
+        //this.senha = senha;
     }
+
+
 }
